@@ -15,7 +15,8 @@ func Start() {
 	router := mux.NewRouter()
 
 	// wiring the complete application
-	ch := CustomerHandlers{service.NewCustomerService(domain.NewCustomerRepositoryStub())}
+	// ch := CustomerHandlers{service.NewCustomerService(domain.NewCustomerRepositoryStub())}
+	ch := CustomerHandlers{service.NewCustomerService(domain.NewCustomerRepositoryDB())}
 
 	
 	router.HandleFunc("/customers", ch.getAllCustomers).Methods(http.MethodGet)
